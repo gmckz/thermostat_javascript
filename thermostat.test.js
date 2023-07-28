@@ -62,6 +62,15 @@ describe('setPowerSavingMode', () => {
         thermostat.setPowerSavingMode(true);
         expect(thermostat.getMaxTemperature()).toEqual(25);
     })
+    it('calling setPowerSavingMode(true) when temperature is above 25 resets temperature to 25', () => {
+        const thermostat = new Thermostat();
+        thermostat.setPowerSavingMode(false);
+        for (let i = 0 ; i < 6 ; i++) {
+            thermostat.up();
+        }
+        thermostat.setPowerSavingMode(true);
+        expect(thermostat.temperature).toEqual(25);
+    });
 })
 
 describe('getMaxTemperature', () => {

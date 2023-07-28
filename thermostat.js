@@ -24,6 +24,9 @@ class Thermostat {
     setPowerSavingMode(bool) {
         if (bool === true) {
             this.maxTemperature = 25;
+            if (this.temperature > this.maxTemperature) {
+                this.temperature = this.maxTemperature;
+            }
         } else {
             this.maxTemperature = 32;
         }
